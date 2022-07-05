@@ -41,18 +41,18 @@ class Client:
             if 0 < timeout < total_ms:
                 raise TimeoutError(f"Connection to {self.url} timed out")
 
-    def _on_open(self):
+    def _on_open(self, ws_app, *args):
         self.opened = True
 
-    def _on_close(self):
+    def _on_close(self, ws_app, *args):
         self.connected = False
         logging.debug("Whoops! Lost connection to " + self.ws.url)
         self._clean_up()
 
-    def _on_error(self, error):
+    def _on_error(self, ws_app, error, *args):
         logging.debug(error)
 
-    def _on_message(self, message):
+    def _on_message(self, ws_app, message, *args):
         logging.debug("\n<<< " + str(message))
         frame = Frame.unmarshall_single(message)
         _results = []
