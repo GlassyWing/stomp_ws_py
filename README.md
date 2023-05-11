@@ -4,7 +4,7 @@ simple python client for stomp over websocket.
 
 ## Usage
 
-The usage is simple if you have experience using Stomp js, assuming you have built a websocket server with [SpringBoot](https://spring.io/guides/gs/messaging-stomp-websocket/), below is the way to connet:
+The usage is simple if you have experience using Stomp js, assuming you have built a websocket server with [SpringBoot](https://spring.io/guides/gs/messaging-stomp-websocket/), below is the way to connect:
 
 ```python
 LOG_FORMAT = "%(asctime)s - %(levelname)s - %(message)s"
@@ -31,7 +31,7 @@ client.disconnect()
 
 ### .connect(login, passcode, headers, connectCallback, errorCallback, timeout)
 
-Attemps to connect server, the `timeout` default to 0 means that will block until a successful connection. Also you could set login and passcode if the server requires auth.
+Attempts to connect to the server, the `timeout` default to 0 means that will block until a successful connection. You can also set login and passcode if the server requires auth.
 
 ### .disconnect(disconnectCallback, headers)
 
@@ -43,7 +43,7 @@ Subscribes to a destination on the STOMP server to receive messages that are pub
 
 ```python
 sub_id, unsubscribe = client.subscribe("/topic/1", some_func)
-unsubscribe() # This will unsubscrite topic '/topic/1'
+unsubscribe() # This will unsubscribe topic '/topic/1'
 ```
 
 The `callback` must be a function that accepts a frame argument:
@@ -57,7 +57,7 @@ def some_func(frame):
 
 ### .unsubscribe(dest)
 
-Unsubscribe a topic.
+Unsubscribe from a topic.
 
 ### .send(dest, headers=None, body=None)
 
