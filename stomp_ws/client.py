@@ -10,10 +10,10 @@ VERSIONS = '1.0,1.1'
 
 class Client:
 
-    def __init__(self, url):
+    def __init__(self, url, headers={}):
 
         self.url = url
-        self.ws = websocket.WebSocketApp(self.url)
+        self.ws = websocket.WebSocketApp(self.url, headers)
         self.ws.on_open = self._on_open
         self.ws.on_message = self._on_message
         self.ws.on_error = self._on_error
